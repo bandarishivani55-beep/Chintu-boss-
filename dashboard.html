@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid gold;
+}
+
+.header h1{
+color:gold;
+}
+
+.header p{
+color:#ddd;
+margin-top:8px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+padding:20px;
+padding-bottom:90px;
+}
+
+.card{
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:25px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px gold;
+}
+
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.title{
+font-size:18px;
+font-weight:bold;
+}
+
+.footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111;
+border-top:2px solid gold;
+text-align:center;
+padding:15px;
+color:gold;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>📊 Dashboard</h1>
+<p>Welcome, <span id="username"></span></p>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='home.html'">
+<div class="icon">🏠</div>
+<div class="title">Home</div>
+</div>
+
+<div class="card" onclick="location.href='study-features.html'">
+<div class="icon">📚</div>
+<div class="title">Study</div>
+</div>
+
+<div class="card" onclick="location.href='home-tools.html'">
+<div class="icon">🧰</div>
+<div class="title">Home Tools</div>
+</div>
+
+<div class="card" onclick="location.href='utility-features.html'">
+<div class="icon">⚙️</div>
+<div class="title">Utilities</div>
+</div>
+
+<div class="card" onclick="location.href='ai-assistant.html'">
+<div class="icon">🤖</div>
+<div class="title">AI Assistant</div>
+</div>
+
+<div class="card" onclick="location.href='profile.html'">
+<div class="icon">👤</div>
+<div class="title">Profile</div>
+</div>
+
+<div class="card" onclick="location.href='settings.html'">
+<div class="icon">⚙️</div>
+<div class="title">Settings</div>
+</div>
+
+<div class="card" onclick="location.href='talking-friend.html'">
+<div class="icon">🐱</div>
+<div class="title">Chintu Cat</div>
+</div>
+
+</div>
+
+<div class="footer">
+Chintu Boss © 2026
+</div>
+
+<script>
+document.getElementById("username").innerHTML =
+localStorage.getItem("name") || "User";
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+background:#222;
+border:2px solid gold;
+border-radius:12px;
+padding:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+background:#333;
+box-shadow:0 0 15px gold;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚙️ Settings</h1>
+
+<div class="menu">
+
+<div class="card" onclick="location.href='dark-mode.html'">
+🌙 Dark Mode
+</div>
+
+<div class="card" onclick="location.href='language.html'">
+🌐 Language
+</div>
+
+<div class="card" onclick="location.href='privacy.html'">
+🔒 Privacy
+</div>
+
+<div class="card" onclick="location.href='backup-restore.html'">
+💾 Backup & Restore
+</div>
+
+</div>
+
+<button onclick="location.href='dashboard.html'">
+⬅ Back to Dashboard
+</button>
+
+</div>
+
+</body>
+</html>

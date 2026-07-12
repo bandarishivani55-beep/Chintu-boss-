@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid gold;
+}
+
+.header h1{
+color:gold;
+}
+
+.header p{
+color:#ddd;
+margin-top:8px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:20px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px gold;
+}
+
+.icon{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.title{
+font-size:16px;
+font-weight:bold;
+}
+
+.back{
+width:90%;
+display:block;
+margin:20px auto;
+padding:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<h1>🏠 Home</h1>
+<p>Welcome, <span id="username"></span></p>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='notes.html'">
+<div class="icon">📝</div>
+<div class="title">Notes</div>
+</div>
+
+<div class="card" onclick="location.href='attendance.html'">
+<div class="icon">📊</div>
+<div class="title">Attendance</div>
+</div>
+
+<div class="card" onclick="location.href='calendar.html'">
+<div class="icon">📅</div>
+<div class="title">Calendar</div>
+</div>
+
+<div class="card" onclick="location.href='study-timer.html'">
+<div class="icon">⏱️</div>
+<div class="title">Study Timer</div>
+</div>
+
+<div class="card" onclick="location.href='cgpa.html'">
+<div class="icon">🎓</div>
+<div class="title">CGPA</div>
+</div>
+
+<div class="card" onclick="location.href='goals.html'">
+<div class="icon">🎯</div>
+<div class="title">Goals</div>
+</div>
+
+<div class="card" onclick="location.href='notifications.html'">
+<div class="icon">🔔</div>
+<div class="title">Notifications</div>
+</div>
+
+<div class="card" onclick="location.href='rewards.html'">
+<div class="icon">🏆</div>
+<div class="title">Rewards</div>
+</div>
+
+</div>
+
+<button class="back" onclick="location.href='dashboard.html'">
+⬅ Back to Dashboard
+</button>
+
+<script>
+document.getElementById("username").innerHTML =
+localStorage.getItem("name") || "User";
+</script>
+
+</body>
+</html>

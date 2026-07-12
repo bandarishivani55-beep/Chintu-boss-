@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Features - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid gold;
+}
+
+.header h1{
+color:gold;
+}
+
+.header p{
+color:#ddd;
+margin-top:8px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:20px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px gold;
+}
+
+.icon{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.title{
+font-size:16px;
+font-weight:bold;
+}
+
+.back{
+width:90%;
+display:block;
+margin:20px auto;
+padding:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>📚 Study Features</h1>
+<p>Choose a study tool</p>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='assignments.html'">
+<div class="icon">📄</div>
+<div class="title">Assignments</div>
+</div>
+
+<div class="card" onclick="location.href='quiz.html'">
+<div class="icon">❓</div>
+<div class="title">Quiz</div>
+</div>
+
+<div class="card" onclick="location.href='flash-cards.html'">
+<div class="icon">🃏</div>
+<div class="title">Flash Cards</div>
+</div>
+
+<div class="card" onclick="location.href='time-table.html'">
+<div class="icon">🗓️</div>
+<div class="title">Time Table</div>
+</div>
+
+</div>
+
+<button class="back" onclick="location.href='dashboard.html'">
+⬅ Back to Dashboard
+</button>
+
+</body>
+</html>

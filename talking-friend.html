@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chintu Cat</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
+}
+
+.container{
+
+width:390px;
+height:820px;
+
+background:linear-gradient(180deg,#111,#000);
+
+border:3px solid gold;
+border-radius:35px;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:0 0 30px gold;
+
+}
+
+.title{
+
+text-align:center;
+margin-top:35px;
+
+font-size:48px;
+font-weight:bold;
+
+color:gold;
+
+text-shadow:0 0 12px gold;
+
+}
+
+.cat-area{
+
+margin-top:25px;
+
+display:flex;
+justify-content:center;
+
+}
+
+.cat{
+
+width:240px;
+height:240px;
+
+border-radius:50%;
+
+background:#222;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+overflow:hidden;
+
+box-shadow:0 0 20px gold;
+
+animation:blink 4s infinite;
+
+}
+
+.cat img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
+}
+
+@keyframes blink{
+
+0%{
+transform:scaleY(1);
+}
+
+48%{
+transform:scaleY(1);
+}
+
+50%{
+transform:scaleY(.92);
+}
+
+52%{
+transform:scaleY(1);
+}
+
+100%{
+transform:scaleY(1);
+}
+
+}
+
+.message{
+
+width:85%;
+
+margin:30px auto;
+
+background:#111;
+
+border:2px solid gold;
+
+border-radius:25px;
+
+padding:18px;
+
+text-align:center;
+
+font-size:20px;
+
+color:white;
+
+}
+
+#speechText{
+
+color:white;
+
+}
+
+.mic-area{
+
+display:flex;
+
+justify-content:center;
+
+margin-top:35px;
+
+}
+
+.mic{
+
+width:150px;
+height:150px;
+
+border-radius:50%;
+
+background:gold;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:70px;
+
+cursor:pointer;
+
+box-shadow:0 0 25px gold;
+
+transition:.3s;
+
+}
+
+.mic:hover{
+
+transform:scale(1.08);
+
+}
+
+.bottom{
+
+text-align:center;
+
+margin-top:25px;
+
+font-size:34px;
+
+color:gold;
+
+font-weight:bold;
+
+}
+
+.footer{
+
+position:absolute;
+
+bottom:20px;
+
+width:100%;
+
+text-align:center;
+
+color:#888;
+
+font-size:14px;
+
+}
+
+.listening{
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 10px gold;
+
+}
+
+50%{
+
+box-shadow:0 0 40px gold;
+
+}
+
+100%{
+
+box-shadow:0 0 10px gold;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="title">
+
+🐱 Chintu Cat
+
+</div>
+
+<div class="cat-area">
+
+<div class="cat" id="cat">
+
+<!-- Replace this image -->
+<img src="images/chintu-cat.png">
+
+</div>
+
+</div>
+
+<div class="message">
+
+<p id="speechText">
+
+👋 Hi! Press the microphone and talk.
+
+</p>
+
+</div>
+
+<div class="mic-area">
+
+<div class="mic" id="micButton">
+
+🎤
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+Start Talking
+
+</div>
+
+<div class="footer">
+
+Chintu Boss Voice Friend
+
+</div>
+
+</div>
+
+<script>
+
+// JavaScript will be added in Part 2
+
+</script>
+
+</body>
+</html><script>
+
+const speechText = document.getElementById("speechText");
+const micButton = document.getElementById("micButton");
+const cat = document.getElementById("cat");
+
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+if(!SpeechRecognition){
+
+speechText.innerHTML =
+"❌ Speech Recognition is not supported on this browser.";
+
+}else{
+
+const recognition = new SpeechRecognition();
+
+recognition.lang = "en-US";
+
+recognition.continuous = false;
+
+recognition.interimResults = false;
+
+micButton.onclick = function(){
+
+recognition.start();
+
+micButton.classList.add("listening");
+
+speechText.innerHTML =
+"🎤 Listening...";
+
+};
+
+recognition.onresult = function(event){
+
+let text =
+event.results[0][0].transcript;
+
+speechText.innerHTML = text;
+
+repeatVoice(text);
+
+};
+
+recognition.onerror = function(){
+
+speechText.innerHTML =
+"❌ Could not recognize your voice.";
+
+micButton.classList.remove("listening");
+
+};
+
+recognition.onend = function(){
+
+micButton.classList.remove("listening");
+
+};
+
+}
+
+function repeatVoice(text){
+
+cat.style.transform="scale(1.05)";
+cat.style.transition=".3s";
+
+const msg = new SpeechSynthesisUtterance();
+
+msg.text = text;
+
+msg.pitch = 1.6;
+
+msg.rate = 0.95;
+
+msg.volume = 1;
+
+msg.onstart=function(){
+
+cat.classList.add("listening");
+
+};
+
+msg.onend=function(){
+
+cat.classList.remove("listening");
+
+cat.style.transform="scale(1)";
+
+};
+
+speechSynthesis.cancel();
+
+speechSynthesis.speak(msg);
+
+}
+
+</script><div class="cat" id="cat">
+
+<img
+id="catImage"
+src="images/chintu-cat.png"
+alt="Chintu Cat">
+
+<div class="mouth" id="mouth"></div>
+
+</div>

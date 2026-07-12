@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alarm - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:400px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:18px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#status{
+margin-top:20px;
+color:gold;
+font-size:18px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⏰ Alarm</h1>
+
+<input type="time" id="alarmTime">
+
+<button onclick="setAlarm()">
+Set Alarm
+</button>
+
+<div id="status"></div>
+
+<button onclick="location.href='home-tools.html'">
+⬅ Back to Home Tools
+</button>
+
+</div>
+
+<script>
+
+let alarmTime="";
+
+function setAlarm(){
+
+alarmTime=document.getElementById("alarmTime").value;
+
+if(alarmTime===""){
+alert("Please select a time.");
+return;
+}
+
+document.getElementById("status").innerHTML=
+"Alarm set for "+alarmTime;
+
+}
+
+setInterval(function(){
+
+let now=new Date();
+
+let currentTime=
+String(now.getHours()).padStart(2,"0")+":"+
+String(now.getMinutes()).padStart(2,"0");
+
+if(currentTime===alarmTime){
+
+alert("⏰ Alarm Ringing!");
+
+alarmTime="";
+
+document.getElementById("status").innerHTML="";
+
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignments - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+padding:20px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:20px;
+}
+
+h1{
+color:gold;
+text-align:center;
+margin-bottom:20px;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📄 Assignments</h1>
+
+<input
+type="text"
+id="subject"
+placeholder="Subject Name">
+
+<input
+type="date"
+id="dueDate">
+
+<textarea
+id="assignment"
+placeholder="Assignment Details"></textarea>
+
+<button onclick="saveAssignment()">
+💾 Save Assignment
+</button>
+
+<button onclick="location.href='study-features.html'">
+⬅ Back to Study Features
+</button>
+
+</div>
+
+<script>
+document.getElementById("subject").value =
+localStorage.getItem("assignmentSubject") || "";
+
+document.getElementById("dueDate").value =
+localStorage.getItem("assignmentDueDate") || "";
+
+document.getElementById("assignment").value =
+localStorage.getItem("assignmentDetails") || "";
+
+function saveAssignment(){
+
+let subject=document.getElementById("subject").value.trim();
+let dueDate=document.getElementById("dueDate").value;
+let assignment=document.getElementById("assignment").value.trim();
+
+if(subject==="" || dueDate==="" || assignment===""){
+alert("Please fill all fields.");
+return;
+}
+
+localStorage.setItem("assignmentSubject",subject);
+localStorage.setItem("assignmentDueDate",dueDate);
+localStorage.setItem("assignmentDetails",assignment);
+
+alert("Assignment saved successfully!");
+
+}
+</script>
+
+</body>
+</html>

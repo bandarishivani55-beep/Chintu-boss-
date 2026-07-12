@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidebar Menu - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+.menu-btn{
+font-size:30px;
+padding:15px;
+cursor:pointer;
+color:gold;
+}
+
+.sidebar{
+height:100%;
+width:0;
+position:fixed;
+top:0;
+left:0;
+background:#111;
+overflow-x:hidden;
+transition:.4s;
+padding-top:60px;
+border-right:2px solid gold;
+}
+
+.sidebar a{
+display:block;
+padding:15px 25px;
+color:#fff;
+text-decoration:none;
+font-size:18px;
+transition:.3s;
+}
+
+.sidebar a:hover{
+background:gold;
+color:#000;
+}
+
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+font-size:35px;
+cursor:pointer;
+color:gold;
+}
+
+.content{
+padding:20px;
+text-align:center;
+}
+
+.content h1{
+color:gold;
+margin-top:30px;
+}
+
+.content p{
+color:#ccc;
+margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu-btn" onclick="openMenu()">☰</div>
+
+<div id="sidebar" class="sidebar">
+
+<div class="close-btn" onclick="closeMenu()">&times;</div>
+
+<a href="dashboard.html">🏠 Dashboard</a>
+<a href="home.html">🏡 Home</a>
+<a href="study-features.html">📚 Study Features</a>
+<a href="home-tools.html">🧰 Home Tools</a>
+<a href="utility-features.html">⚙️ Utility Features</a>
+<a href="ai-assistant.html">🤖 AI Assistant</a>
+<a href="profile.html">👤 Profile</a>
+<a href="settings.html">⚙️ Settings</a>
+<a href="login.html">🚪 Logout</a>
+
+</div>
+
+<div class="content">
+<h1>📂 Sidebar Menu</h1>
+<p>Click the ☰ icon to open the navigation menu.</p>
+</div>
+
+<script>
+function openMenu(){
+document.getElementById("sidebar").style.width="260px";
+}
+
+function closeMenu(){
+document.getElementById("sidebar").style.width="0";
+}
+</script>
+
+</body>
+</html>

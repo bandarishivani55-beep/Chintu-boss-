@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Files - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#fileList{
+margin-top:20px;
+text-align:left;
+}
+
+.file-item{
+background:#222;
+border:1px solid gold;
+border-radius:10px;
+padding:12px;
+margin-bottom:10px;
+color:#fff;
+word-break:break-all;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📁 Files</h1>
+
+<input
+type="file"
+id="fileInput">
+
+<button onclick="saveFile()">
+Upload File
+</button>
+
+<div id="fileList"></div>
+
+<button onclick="location.href='home-tools.html'">
+⬅ Back to Home Tools
+</button>
+
+</div>
+
+<script>
+
+let files=JSON.parse(localStorage.getItem("files"))||[];
+
+displayFiles();
+
+function saveFile(){
+
+const input=document.getElementById("fileInput");
+
+if(input.files.length===0){
+alert("Please select a file.");
+return;
+}
+
+files.push(input.files[0].name);
+
+localStorage.setItem(
+"files",
+JSON.stringify(files)
+);
+
+input.value="";
+
+displayFiles();
+
+alert("File Added Successfully!");
+
+}
+
+function displayFiles(){
+
+const list=document.getElementById("fileList");
+
+list.innerHTML="";
+
+files.forEach(file=>{
+
+list.innerHTML+=`
+<div class="file-item">
+📄 ${file}
+</div>
+`;
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

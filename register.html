@@ -1,0 +1,155 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:90%;
+max-width:400px;
+background:#111;
+padding:30px;
+border:2px solid gold;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,215,0,.4);
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:18px;
+background:#222;
+border:2px solid gold;
+border-radius:10px;
+color:#fff;
+font-size:16px;
+outline:none;
+}
+
+input::placeholder{
+color:#bbb;
+}
+
+button{
+width:100%;
+padding:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+a{
+color:gold;
+text-decoration:none;
+display:block;
+margin-top:20px;
+}
+
+.footer{
+margin-top:20px;
+color:#ccc;
+font-size:14px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>📝 Register</h1>
+
+<input
+type="text"
+id="name"
+placeholder="Full Name">
+
+<input
+type="email"
+id="email"
+placeholder="Email Address">
+
+<input
+type="password"
+id="password"
+placeholder="Create Password">
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password">
+
+<button onclick="register()">
+Create Account
+</button>
+
+<a href="login.html">Already have an account? Login</a>
+
+<div class="footer">
+Create your Chintu Boss account
+</div>
+
+</div>
+
+<script>
+function register(){
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let password=document.getElementById("password").value;
+let confirmPassword=document.getElementById("confirmPassword").value;
+
+if(name==="" || email==="" || password==="" || confirmPassword===""){
+alert("Please fill all fields.");
+return;
+}
+
+if(password!==confirmPassword){
+alert("Passwords do not match.");
+return;
+}
+
+localStorage.setItem("name",name);
+localStorage.setItem("email",email);
+localStorage.setItem("password",password);
+
+alert("Registration Successful!");
+
+window.location.href="login.html";
+
+}
+</script>
+
+</body>
+</html>

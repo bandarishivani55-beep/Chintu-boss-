@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendar - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:500px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input[type="date"]{
+width:100%;
+padding:15px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+margin-bottom:20px;
+}
+
+.event-box{
+margin-top:20px;
+}
+
+textarea{
+width:100%;
+height:120px;
+padding:12px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+resize:none;
+outline:none;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📅 Calendar</h1>
+
+<input
+type="date"
+id="date">
+
+<div class="event-box">
+
+<textarea
+id="event"
+placeholder="Write your event or reminder..."></textarea>
+
+</div>
+
+<button onclick="saveEvent()">
+💾 Save Event
+</button>
+
+<button onclick="location.href='home.html'">
+⬅ Back to Home
+</button>
+
+</div>
+
+<script>
+function saveEvent(){
+
+let date=document.getElementById("date").value;
+let event=document.getElementById("event").value.trim();
+
+if(date==="" || event===""){
+alert("Please select a date and enter an event.");
+return;
+}
+
+localStorage.setItem("event_"+date,event);
+
+alert("Event saved successfully!");
+
+}
+</script>
+
+</body>
+</html>

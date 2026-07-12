@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chat - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:500px;
+height:90vh;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+.header{
+padding:15px;
+text-align:center;
+background:#1a1a1a;
+border-bottom:2px solid gold;
+}
+
+.header h1{
+color:gold;
+}
+
+.chat-box{
+flex:1;
+padding:15px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.message{
+padding:12px;
+border-radius:12px;
+max-width:80%;
+word-wrap:break-word;
+}
+
+.user{
+align-self:flex-end;
+background:gold;
+color:#000;
+}
+
+.ai{
+align-self:flex-start;
+background:#222;
+color:#fff;
+border:1px solid gold;
+}
+
+.input-area{
+display:flex;
+padding:15px;
+gap:10px;
+background:#1a1a1a;
+}
+
+input{
+flex:1;
+padding:12px;
+border:2px solid gold;
+border-radius:25px;
+background:#222;
+color:#fff;
+outline:none;
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 10px gold;
+}
+
+.back{
+margin:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>🤖 AI Chat</h1>
+</div>
+
+<div id="chatBox" class="chat-box">
+
+<div class="message ai">
+Hello! I'm your AI Assistant. How can I help you today?
+</div>
+
+</div>
+
+<div class="input-area">
+
+<input
+type="text"
+id="userInput"
+placeholder="Type your message...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+<button class="back" onclick="location.href='ai-assistant.html'">
+⬅ Back
+</button>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+let input=document.getElementById("userInput");
+
+let text=input.value.trim();
+
+if(text==="") return;
+
+let chat=document.getElementById("chatBox");
+
+chat.innerHTML+=`
+<div class="message user">${text}</div>
+`;
+
+setTimeout(function(){
+
+chat.innerHTML+=`
+<div class="message ai">
+This is a demo AI response for: "${text}"
+</div>
+`;
+
+chat.scrollTop=chat.scrollHeight;
+
+saveHistory(text);
+
+},500);
+
+input.value="";
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+function saveHistory(message){
+
+let history=
+JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+history.push(message);
+
+localStorage.setItem(
+"chatHistory",
+JSON.stringify(history)
+);
+
+}
+
+</script>
+
+</body>
+</html>

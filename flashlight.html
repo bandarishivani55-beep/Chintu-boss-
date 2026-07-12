@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashlight - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+transition:.3s;
+}
+
+.container{
+width:90%;
+max-width:400px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+.icon{
+font-size:80px;
+margin:20px 0;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+.on{
+background:#fff;
+color:#000;
+}
+</style>
+</head>
+
+<body id="body">
+
+<div class="container">
+
+<h1>🔦 Flashlight</h1>
+
+<div class="icon">💡</div>
+
+<button onclick="toggleFlashlight()">
+Turn ON / OFF
+</button>
+
+<button onclick="location.href='utility-features.html'">
+⬅ Back to Utility Features
+</button>
+
+</div>
+
+<script>
+
+let isOn=false;
+
+function toggleFlashlight(){
+
+isOn=!isOn;
+
+if(isOn){
+document.getElementById("body").classList.add("on");
+}else{
+document.getElementById("body").classList.remove("on");
+}
+
+}
+
+</script>
+
+</body>
+</html>

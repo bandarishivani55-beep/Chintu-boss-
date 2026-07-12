@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat History - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:500px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:20px;
+}
+
+h1{
+color:gold;
+text-align:center;
+margin-bottom:20px;
+}
+
+#history{
+max-height:400px;
+overflow-y:auto;
+margin-bottom:20px;
+}
+
+.item{
+background:#222;
+border:1px solid gold;
+border-radius:10px;
+padding:12px;
+margin-bottom:10px;
+word-break:break-word;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📝 Chat History</h1>
+
+<div id="history"></div>
+
+<button onclick="clearHistory()">
+🗑 Clear History
+</button>
+
+<button onclick="location.href='ai-assistant.html'">
+⬅ Back to AI Assistant
+</button>
+
+</div>
+
+<script>
+
+function loadHistory(){
+
+let history=
+JSON.parse(localStorage.getItem("chatHistory")) || [];
+
+let historyDiv=document.getElementById("history");
+
+historyDiv.innerHTML="";
+
+if(history.length===0){
+
+historyDiv.innerHTML=
+"<div class='item'>No chat history found.</div>";
+
+return;
+
+}
+
+history.forEach(function(message){
+
+historyDiv.innerHTML+=`
+<div class="item">
+💬 ${message}
+</div>
+`;
+
+});
+
+}
+
+function clearHistory(){
+
+localStorage.removeItem("chatHistory");
+
+loadHistory();
+
+alert("Chat history cleared.");
+
+}
+
+window.onload=loadHistory;
+
+</script>
+
+</body>
+</html>

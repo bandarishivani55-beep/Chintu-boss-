@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Tools - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid gold;
+}
+
+.header h1{
+color:gold;
+margin-bottom:5px;
+}
+
+.header p{
+color:#ddd;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:15px;
+padding:20px;
+}
+
+.card{
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:20px;
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px gold;
+}
+
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.title{
+font-size:16px;
+font-weight:bold;
+color:#fff;
+}
+
+.back{
+width:90%;
+display:block;
+margin:20px auto;
+padding:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.back:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🧰 Home Tools</h1>
+<p>Select a Tool</p>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='calculator.html'">
+<div class="icon">🧮</div>
+<div class="title">Calculator</div>
+</div>
+
+<div class="card" onclick="location.href='alarm.html'">
+<div class="icon">⏰</div>
+<div class="title">Alarm</div>
+</div>
+
+<div class="card" onclick="location.href='water-reminder.html'">
+<div class="icon">💧</div>
+<div class="title">Water Reminder</div>
+</div>
+
+<div class="card" onclick="location.href='sleep-tracker.html'">
+<div class="icon">😴</div>
+<div class="title">Sleep Tracker</div>
+</div>
+
+<div class="card" onclick="location.href='pdf-scanner.html'">
+<div class="icon">📄</div>
+<div class="title">PDF Scanner</div>
+</div>
+
+<div class="card" onclick="location.href='files.html'">
+<div class="icon">📁</div>
+<div class="title">Files</div>
+</div>
+
+<div class="card" onclick="location.href='media-player.html'">
+<div class="icon">🎵</div>
+<div class="title">Media Player</div>
+</div>
+
+<div class="card" onclick="location.href='focus-mode.html'">
+<div class="icon">🎯</div>
+<div class="title">Focus Mode</div>
+</div>
+
+<div class="card" onclick="location.href='downloads.html'">
+<div class="icon">⬇️</div>
+<div class="title">Downloads</div>
+</div>
+
+<div class="card" onclick="location.href='app-lock.html'">
+<div class="icon">🔒</div>
+<div class="title">App Lock</div>
+</div>
+
+</div>
+
+<button class="back" onclick="location.href='dashboard.html'">
+⬅ Back to Dashboard
+</button>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Assistant - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid gold;
+}
+
+.header h1{
+color:gold;
+}
+
+.header p{
+color:#ddd;
+margin-top:8px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:25px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 15px gold;
+}
+
+.icon{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.title{
+font-size:18px;
+font-weight:bold;
+color:#fff;
+}
+
+.back{
+width:90%;
+display:block;
+margin:20px auto;
+padding:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.back:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🤖 AI Assistant</h1>
+<p>Choose an AI Feature</p>
+</div>
+
+<div class="grid">
+
+<div class="card" onclick="location.href='ai-chat-ui.html'">
+<div class="icon">💬</div>
+<div class="title">AI Chat</div>
+</div>
+
+<div class="card" onclick="location.href='chat-history.html'">
+<div class="icon">📝</div>
+<div class="title">Chat History</div>
+</div>
+
+</div>
+
+<button class="back" onclick="location.href='dashboard.html'">
+⬅ Back to Dashboard
+</button>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleep Tracker - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+text-align:left;
+margin:10px 0 5px;
+color:gold;
+}
+
+input{
+width:100%;
+padding:12px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+color:gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>😴 Sleep Tracker</h1>
+
+<label>Sleep Time</label>
+<input type="time" id="sleepTime">
+
+<label>Wake Up Time</label>
+<input type="time" id="wakeTime">
+
+<button onclick="calculateSleep()">
+Calculate Sleep
+</button>
+
+<div id="result"></div>
+
+<button onclick="location.href='home-tools.html'">
+⬅ Back to Home Tools
+</button>
+
+</div>
+
+<script>
+
+function calculateSleep(){
+
+let sleep=document.getElementById("sleepTime").value;
+let wake=document.getElementById("wakeTime").value;
+
+if(sleep==="" || wake===""){
+alert("Please select both times.");
+return;
+}
+
+let sleepDate=new Date("2000-01-01T"+sleep);
+let wakeDate=new Date("2000-01-01T"+wake);
+
+if(wakeDate<=sleepDate){
+wakeDate.setDate(wakeDate.getDate()+1);
+}
+
+let diff=(wakeDate-sleepDate)/(1000*60*60);
+
+document.getElementById("result").innerHTML=
+"You slept for <br><br>"+diff.toFixed(1)+" Hours";
+
+localStorage.setItem("sleepTime",sleep);
+localStorage.setItem("wakeTime",wake);
+
+}
+
+window.onload=function(){
+
+document.getElementById("sleepTime").value=
+localStorage.getItem("sleepTime")||"";
+
+document.getElementById("wakeTime").value=
+localStorage.getItem("wakeTime")||"";
+
+};
+
+</script>
+
+</body>
+</html>

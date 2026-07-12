@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Generator - Chintu Boss</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#qrcode{
+margin-top:20px;
+display:flex;
+justify-content:center;
+}
+
+.back{
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📱 QR Generator</h1>
+
+<input
+type="text"
+id="qrText"
+placeholder="Enter text or URL">
+
+<button onclick="generateQR()">
+Generate QR Code
+</button>
+
+<div id="qrcode"></div>
+
+<button
+class="back"
+onclick="location.href='utility-features.html'">
+⬅ Back to Utility Features
+</button>
+
+</div>
+
+<script>
+
+function generateQR(){
+
+let text=document.getElementById("qrText").value.trim();
+
+if(text===""){
+alert("Please enter text or URL.");
+return;
+}
+
+document.getElementById("qrcode").innerHTML="";
+
+new QRCode(document.getElementById("qrcode"),{
+text:text,
+width:200,
+height:200
+});
+
+}
+
+</script>
+
+</body>
+</html>

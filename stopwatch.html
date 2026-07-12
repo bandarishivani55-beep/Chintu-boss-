@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stopwatch - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+#display{
+font-size:48px;
+font-weight:bold;
+color:gold;
+margin:25px 0;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+button{
+flex:1;
+min-width:100px;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+.back{
+width:100%;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⏱️ Stopwatch</h1>
+
+<div id="display">00:00:00</div>
+
+<div class="buttons">
+<button onclick="startStopwatch()">Start</button>
+<button onclick="stopStopwatch()">Stop</button>
+<button onclick="resetStopwatch()">Reset</button>
+</div>
+
+<button class="back" onclick="location.href='utility-features.html'">
+⬅ Back to Utility Features
+</button>
+
+</div>
+
+<script>
+
+let seconds=0;
+let timer=null;
+
+function updateDisplay(){
+
+let hrs=Math.floor(seconds/3600);
+let mins=Math.floor((seconds%3600)/60);
+let secs=seconds%60;
+
+document.getElementById("display").innerHTML=
+String(hrs).padStart(2,"0")+":"+
+String(mins).padStart(2,"0")+":"+
+String(secs).padStart(2,"0");
+
+}
+
+function startStopwatch(){
+
+if(timer!==null) return;
+
+timer=setInterval(function(){
+
+seconds++;
+updateDisplay();
+
+},1000);
+
+}
+
+function stopStopwatch(){
+
+clearInterval(timer);
+timer=null;
+
+}
+
+function resetStopwatch(){
+
+clearInterval(timer);
+timer=null;
+seconds=0;
+updateDisplay();
+
+}
+
+updateDisplay();
+
+</script>
+
+</body>
+</html>

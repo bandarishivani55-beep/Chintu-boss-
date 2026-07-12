@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+.option{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+margin-bottom:15px;
+background:#222;
+border:1px solid gold;
+border-radius:10px;
+}
+
+.option span{
+font-size:16px;
+font-weight:bold;
+}
+
+input[type="checkbox"]{
+width:22px;
+height:22px;
+cursor:pointer;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔒 Privacy Settings</h1>
+
+<div class="option">
+<span>Profile Visibility</span>
+<input type="checkbox" id="profileVisibility">
+</div>
+
+<div class="option">
+<span>Notifications</span>
+<input type="checkbox" id="notifications">
+</div>
+
+<div class="option">
+<span>Location Access</span>
+<input type="checkbox" id="locationAccess">
+</div>
+
+<button onclick="savePrivacy()">
+💾 Save Settings
+</button>
+
+<button onclick="location.href='settings.html'">
+⬅ Back to Settings
+</button>
+
+</div>
+
+<script>
+
+window.onload=function(){
+
+document.getElementById("profileVisibility").checked=
+localStorage.getItem("profileVisibility")==="true";
+
+document.getElementById("notifications").checked=
+localStorage.getItem("notifications")==="true";
+
+document.getElementById("locationAccess").checked=
+localStorage.getItem("locationAccess")==="true";
+
+}
+
+function savePrivacy(){
+
+localStorage.setItem(
+"profileVisibility",
+document.getElementById("profileVisibility").checked
+);
+
+localStorage.setItem(
+"notifications",
+document.getElementById("notifications").checked
+);
+
+localStorage.setItem(
+"locationAccess",
+document.getElementById("locationAccess").checked
+);
+
+alert("Privacy settings saved successfully!");
+
+}
+
+</script>
+
+</body>
+</html>

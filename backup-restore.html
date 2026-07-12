@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backup & Restore - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+p{
+color:#ddd;
+margin-bottom:20px;
+line-height:1.6;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:12px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💾 Backup & Restore</h1>
+
+<p>
+Backup your application data to a file and restore it whenever needed.
+</p>
+
+<button onclick="backupData()">
+📤 Backup Data
+</button>
+
+<button onclick="document.getElementById('restoreFile').click()">
+📥 Restore Data
+</button>
+
+<input
+type="file"
+id="restoreFile"
+accept=".json"
+style="display:none"
+onchange="restoreData(event)">
+
+<button onclick="location.href='settings.html'">
+⬅ Back to Settings
+</button>
+
+</div>
+
+<script>
+
+function backupData(){
+
+const data={};
+
+for(let i=0;i<localStorage.length;i++){
+
+const key=localStorage.key(i);
+data[key]=localStorage.getItem(key);
+
+}
+
+const blob=new Blob(
+[JSON.stringify(data,null,2)],
+{type:"application/json"}
+);
+
+const link=document.createElement("a");
+
+link.href=URL.createObjectURL(blob);
+
+link.download="chintu-boss-backup.json";
+
+link.click();
+
+alert("Backup created successfully!");
+
+}
+
+function restoreData(event){
+
+const file=event.target.files[0];
+
+if(!file) return;
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const data=JSON.parse(e.target.result);
+
+for(const key in data){
+
+localStorage.setItem(key,data[key]);
+
+}
+
+alert("Data restored successfully!");
+
+};
+
+reader.readAsText(file);
+
+}
+
+</script>
+
+</body>
+</html>

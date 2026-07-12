@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGPA Calculator - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#result{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+color:gold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎓 CGPA Calculator</h1>
+
+<input
+type="number"
+id="sem1"
+placeholder="Semester 1 GPA"
+step="0.01">
+
+<input
+type="number"
+id="sem2"
+placeholder="Semester 2 GPA"
+step="0.01">
+
+<input
+type="number"
+id="sem3"
+placeholder="Semester 3 GPA"
+step="0.01">
+
+<input
+type="number"
+id="sem4"
+placeholder="Semester 4 GPA"
+step="0.01">
+
+<button onclick="calculateCGPA()">
+Calculate CGPA
+</button>
+
+<div id="result"></div>
+
+<button onclick="location.href='home.html'">
+⬅ Back to Home
+</button>
+
+</div>
+
+<script>
+function calculateCGPA(){
+
+let s1=parseFloat(document.getElementById("sem1").value)||0;
+let s2=parseFloat(document.getElementById("sem2").value)||0;
+let s3=parseFloat(document.getElementById("sem3").value)||0;
+let s4=parseFloat(document.getElementById("sem4").value)||0;
+
+let count=0;
+let total=0;
+
+if(s1>0){total+=s1;count++;}
+if(s2>0){total+=s2;count++;}
+if(s3>0){total+=s3;count++;}
+if(s4>0){total+=s4;count++;}
+
+if(count===0){
+alert("Please enter at least one GPA.");
+return;
+}
+
+let cgpa=(total/count).toFixed(2);
+
+document.getElementById("result").innerHTML=
+"Your CGPA: "+cgpa;
+
+}
+</script>
+
+</body>
+</html>

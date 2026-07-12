@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+#compass{
+width:220px;
+height:220px;
+margin:20px auto;
+border:5px solid gold;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:70px;
+transition:transform .2s linear;
+background:#222;
+}
+
+.direction{
+font-size:22px;
+color:gold;
+margin-top:20px;
+font-weight:bold;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🧭 Compass</h1>
+
+<div id="compass">🧭</div>
+
+<div class="direction" id="direction">
+Waiting for direction...
+</div>
+
+<button onclick="location.href='utility-features.html'">
+⬅ Back to Utility Features
+</button>
+
+</div>
+
+<script>
+
+if(window.DeviceOrientationEvent){
+
+window.addEventListener("deviceorientation",function(event){
+
+let heading=event.alpha || 0;
+
+document.getElementById("compass").style.transform=
+"rotate(" + (-heading) + "deg)";
+
+document.getElementById("direction").innerHTML=
+"Heading : " + Math.round(heading) + "°";
+
+});
+
+}else{
+
+document.getElementById("direction").innerHTML=
+"Compass not supported on this device.";
+
+}
+
+</script>
+
+</body>
+</html>

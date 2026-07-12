@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Mode - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+transition:.3s;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+body.light{
+background:#f5f5f5;
+color:#000;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+body.light .container{
+background:#fff;
+color:#000;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+.switch{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:#222;
+border:1px solid gold;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+body.light .switch{
+background:#eee;
+}
+
+input[type="checkbox"]{
+width:25px;
+height:25px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌙 Dark Mode</h1>
+
+<div class="switch">
+<span>Enable Light Mode</span>
+<input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+</div>
+
+<button onclick="location.href='settings.html'">
+⬅ Back to Settings
+</button>
+
+</div>
+
+<script>
+
+window.onload=function(){
+
+let theme=localStorage.getItem("theme");
+
+if(theme==="light"){
+document.body.classList.add("light");
+document.getElementById("themeToggle").checked=true;
+}
+
+}
+
+function toggleTheme(){
+
+if(document.getElementById("themeToggle").checked){
+
+document.body.classList.add("light");
+localStorage.setItem("theme","light");
+
+}else{
+
+document.body.classList.remove("light");
+localStorage.setItem("theme","dark");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+text-align:left;
+margin:15px 0 8px;
+color:#fff;
+}
+
+input{
+width:100%;
+padding:12px;
+background:#222;
+border:2px solid gold;
+border-radius:10px;
+color:#fff;
+outline:none;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#result{
+margin-top:20px;
+font-size:20px;
+color:gold;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📊 Attendance Calculator</h1>
+
+<label>Total Classes</label>
+<input
+type="number"
+id="total"
+placeholder="Enter total classes">
+
+<label>Classes Attended</label>
+<input
+type="number"
+id="attended"
+placeholder="Enter attended classes">
+
+<button onclick="calculateAttendance()">
+Calculate
+</button>
+
+<div id="result"></div>
+
+<button onclick="location.href='home.html'">
+⬅ Back to Home
+</button>
+
+</div>
+
+<script>
+function calculateAttendance(){
+
+let total=parseFloat(document.getElementById("total").value);
+let attended=parseFloat(document.getElementById("attended").value);
+
+if(isNaN(total)||isNaN(attended)||total<=0){
+alert("Please enter valid values.");
+return;
+}
+
+let percentage=(attended/total)*100;
+
+document.getElementById("result").innerHTML=
+"Attendance: "+percentage.toFixed(2)+"%";
+}
+</script>
+
+</body>
+</html>

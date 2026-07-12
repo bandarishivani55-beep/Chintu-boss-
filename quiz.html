@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:600px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+}
+
+h1{
+text-align:center;
+color:gold;
+margin-bottom:25px;
+}
+
+.question{
+font-size:20px;
+margin-bottom:20px;
+}
+
+.option{
+display:block;
+background:#222;
+border:2px solid gold;
+border-radius:10px;
+padding:12px;
+margin-bottom:12px;
+cursor:pointer;
+}
+
+.option input{
+margin-right:10px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#result{
+margin-top:20px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+color:gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>❓ Quiz</h1>
+
+<div class="question">
+What does HTML stand for?
+</div>
+
+<label class="option">
+<input type="radio" name="quiz" value="0">
+Hyper Trainer Marking Language
+</label>
+
+<label class="option">
+<input type="radio" name="quiz" value="1">
+Hyper Text Markup Language
+</label>
+
+<label class="option">
+<input type="radio" name="quiz" value="0">
+High Text Markdown Language
+</label>
+
+<label class="option">
+<input type="radio" name="quiz" value="0">
+Home Tool Markup Language
+</label>
+
+<button onclick="checkAnswer()">
+Submit Answer
+</button>
+
+<div id="result"></div>
+
+<button onclick="location.href='study-features.html'">
+⬅ Back to Study Features
+</button>
+
+</div>
+
+<script>
+function checkAnswer(){
+
+let options=document.getElementsByName("quiz");
+let selected=-1;
+
+for(let i=0;i<options.length;i++){
+if(options[i].checked){
+selected=options[i].value;
+}
+}
+
+if(selected==-1){
+alert("Please select an answer.");
+return;
+}
+
+if(selected=="1"){
+document.getElementById("result").innerHTML="✅ Correct Answer!";
+}else{
+document.getElementById("result").innerHTML="❌ Wrong Answer!";
+}
+
+}
+</script>
+
+</body>
+</html>

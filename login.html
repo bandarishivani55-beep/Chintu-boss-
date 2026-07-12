@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:90%;
+max-width:400px;
+background:#111;
+padding:30px;
+border:2px solid gold;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,215,0,.4);
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:18px;
+background:#222;
+border:2px solid gold;
+border-radius:10px;
+color:#fff;
+font-size:16px;
+outline:none;
+}
+
+input::placeholder{
+color:#bbb;
+}
+
+button{
+width:100%;
+padding:15px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-bottom:15px;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+a{
+color:gold;
+text-decoration:none;
+font-size:15px;
+}
+
+.links{
+margin-top:10px;
+display:flex;
+justify-content:space-between;
+}
+
+.footer{
+margin-top:25px;
+color:#ccc;
+font-size:14px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🔐 Login</h1>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email">
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password">
+
+<button onclick="login()">
+Login
+</button>
+
+<div class="links">
+<a href="forgot-password.html">Forgot Password?</a>
+<a href="register.html">Register</a>
+</div>
+
+<div class="footer">
+Welcome to Chintu Boss
+</div>
+
+</div>
+
+<script>
+function login(){
+
+let email=document.getElementById("email").value.trim();
+let password=document.getElementById("password").value.trim();
+
+if(email==="" || password===""){
+alert("Please fill all fields.");
+return;
+}
+
+let savedEmail=localStorage.getItem("email");
+let savedPassword=localStorage.getItem("password");
+
+if(email===savedEmail && password===savedPassword){
+
+alert("Login Successful!");
+
+window.location.href="dashboard.html";
+
+}else{
+
+alert("Invalid Email or Password.");
+
+}
+
+}
+</script>
+
+</body>
+</html>

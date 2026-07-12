@@ -1,0 +1,140 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Timer - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:400px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+#timer{
+font-size:50px;
+font-weight:bold;
+color:gold;
+margin:25px 0;
+}
+
+input{
+width:100%;
+padding:12px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⏱️ Study Timer</h1>
+
+<input
+type="number"
+id="minutes"
+placeholder="Enter minutes">
+
+<div id="timer">00:00</div>
+
+<button onclick="startTimer()">
+▶ Start Timer
+</button>
+
+<button onclick="location.href='home.html'">
+⬅ Back to Home
+</button>
+
+</div>
+
+<script>
+let interval;
+
+function startTimer(){
+
+clearInterval(interval);
+
+let time=parseInt(document.getElementById("minutes").value);
+
+if(isNaN(time)||time<=0){
+alert("Enter valid minutes.");
+return;
+}
+
+let seconds=time*60;
+
+interval=setInterval(function(){
+
+let min=Math.floor(seconds/60);
+let sec=seconds%60;
+
+document.getElementById("timer").innerHTML=
+String(min).padStart(2,"0")+":"+
+String(sec).padStart(2,"0");
+
+if(seconds<=0){
+clearInterval(interval);
+alert("⏰ Study session completed!");
+}
+
+seconds--;
+
+},1000);
+
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Table - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+padding:20px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+}
+
+h1{
+color:gold;
+text-align:center;
+margin-bottom:25px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+border:2px solid gold;
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#222;
+color:gold;
+}
+
+td{
+background:#111;
+color:#fff;
+}
+
+input{
+width:100%;
+background:transparent;
+border:none;
+outline:none;
+color:#fff;
+text-align:center;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🗓️ Time Table</h1>
+
+<table>
+
+<tr>
+<th>Day</th>
+<th>Subject</th>
+</tr>
+
+<tr>
+<td>Monday</td>
+<td><input id="mon" placeholder="Subject"></td>
+</tr>
+
+<tr>
+<td>Tuesday</td>
+<td><input id="tue" placeholder="Subject"></td>
+</tr>
+
+<tr>
+<td>Wednesday</td>
+<td><input id="wed" placeholder="Subject"></td>
+</tr>
+
+<tr>
+<td>Thursday</td>
+<td><input id="thu" placeholder="Subject"></td>
+</tr>
+
+<tr>
+<td>Friday</td>
+<td><input id="fri" placeholder="Subject"></td>
+</tr>
+
+<tr>
+<td>Saturday</td>
+<td><input id="sat" placeholder="Subject"></td>
+</tr>
+
+</table>
+
+<button onclick="saveTable()">
+💾 Save Time Table
+</button>
+
+<button onclick="location.href='study-features.html'">
+⬅ Back to Study Features
+</button>
+
+</div>
+
+<script>
+const days=["mon","tue","wed","thu","fri","sat"];
+
+days.forEach(day=>{
+document.getElementById(day).value=
+localStorage.getItem(day)||"";
+});
+
+function saveTable(){
+
+days.forEach(day=>{
+localStorage.setItem(
+day,
+document.getElementById(day).value
+);
+});
+
+alert("Time Table Saved Successfully!");
+
+}
+</script>
+
+</body>
+</html>

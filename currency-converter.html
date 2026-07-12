@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input,
+select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+color:gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💱 Currency Converter</h1>
+
+<select id="currency">
+<option value="usd">USD ➜ INR</option>
+<option value="inr">INR ➜ USD</option>
+<option value="eur">EUR ➜ INR</option>
+<option value="gbp">GBP ➜ INR</option>
+</select>
+
+<input
+type="number"
+id="amount"
+placeholder="Enter Amount">
+
+<button onclick="convertCurrency()">
+Convert
+</button>
+
+<div id="result"></div>
+
+<button onclick="location.href='utility-features.html'">
+⬅ Back to Utility Features
+</button>
+
+</div>
+
+<script>
+
+function convertCurrency(){
+
+let amount=parseFloat(document.getElementById("amount").value);
+
+let currency=document.getElementById("currency").value;
+
+if(isNaN(amount)){
+alert("Please enter a valid amount.");
+return;
+}
+
+let result="";
+
+switch(currency){
+
+case "usd":
+result=(amount*83.50).toFixed(2)+" INR";
+break;
+
+case "inr":
+result=(amount/83.50).toFixed(2)+" USD";
+break;
+
+case "eur":
+result=(amount*90.50).toFixed(2)+" INR";
+break;
+
+case "gbp":
+result=(amount*106.00).toFixed(2)+" INR";
+break;
+
+}
+
+document.getElementById("result").innerHTML=
+"Converted Amount: "+result;
+
+}
+
+</script>
+
+</body>
+</html>

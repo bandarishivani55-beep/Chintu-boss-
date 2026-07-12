@@ -1,0 +1,105 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+padding:20px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:gold;
+margin-bottom:20px;
+}
+
+textarea{
+width:100%;
+height:250px;
+padding:15px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+resize:none;
+outline:none;
+font-size:16px;
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📝 Notes</h1>
+
+<textarea
+id="notes"
+placeholder="Write your notes here..."></textarea>
+
+<button onclick="saveNotes()">
+💾 Save Notes
+</button>
+
+<button onclick="location.href='home.html'">
+⬅ Back to Home
+</button>
+
+</div>
+
+<script>
+const notes=document.getElementById("notes");
+
+notes.value=localStorage.getItem("notes") || "";
+
+function saveNotes(){
+
+localStorage.setItem("notes",notes.value);
+
+alert("Notes saved successfully!");
+
+}
+</script>
+
+</body>
+</html>

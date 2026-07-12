@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Scanner - Chintu Boss</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:100%;
+max-width:450px;
+background:#111;
+border:2px solid gold;
+border-radius:20px;
+padding:25px;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+background:#222;
+color:#fff;
+border:2px solid gold;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+background:linear-gradient(to right,#FFD700,#D4AF37);
+color:#000;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:0 0 15px gold;
+}
+
+#preview{
+margin-top:20px;
+}
+
+#preview img{
+width:100%;
+border:2px solid gold;
+border-radius:10px;
+margin-top:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📄 PDF Scanner</h1>
+
+<input
+type="file"
+id="imageInput"
+accept="image/*">
+
+<button onclick="scanDocument()">
+Scan Document
+</button>
+
+<div id="preview"></div>
+
+<button onclick="location.href='home-tools.html'">
+⬅ Back to Home Tools
+</button>
+
+</div>
+
+<script>
+
+function scanDocument(){
+
+const file=document.getElementById("imageInput").files[0];
+
+if(!file){
+alert("Please select an image.");
+return;
+}
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+document.getElementById("preview").innerHTML=
+"<h3 style='color:gold;'>Scanned Preview</h3><img src='"+e.target.result+"'>";
+
+localStorage.setItem("scannedImage",e.target.result);
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+window.onload=function(){
+
+const saved=localStorage.getItem("scannedImage");
+
+if(saved){
+
+document.getElementById("preview").innerHTML=
+"<h3 style='color:gold;'>Last Scan</h3><img src='"+saved+"'>";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
